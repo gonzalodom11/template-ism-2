@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Q&A</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<h1><span th:text="${@welcomeFormatter.welcomeMessage(#authentication.principal)}"></span></h1>
+
+<a href="/questions/ask">Ask question</a>
+<h2>Trending categories</h2>
+<ul th:each="category: ${categories}">
+    <li><a th:href="|/questions/category/${category.id}|" th:text="${category.id}"></a></li>
+</ul>
+<p th:if="${categories.size() == 0}">Oops, there are no categories yet!</p>
+
+</body>
